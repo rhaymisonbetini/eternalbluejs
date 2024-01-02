@@ -16,7 +16,7 @@ const Roles = use("App/Models/Role")
 
 class RoleSeeder {
   async run() {
-    let roles = ['manager', 'cashier', 'stocker', 'finance', 'cleaning']
+    let roles = ['manager', 'cashier', 'stocker', 'finance', 'cleaning','root']
     for (let role of roles) {
       let exists = await Roles.query().where('name', role).first();
       if (!exists) {

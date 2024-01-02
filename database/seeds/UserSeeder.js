@@ -13,6 +13,7 @@
 /** @type {import('@adonisjs/lucid/src/Factory')} */
 const Factory = use('Factory')
 const User = use("App/Models/User")
+const UserHasPhone = use("App/Models/UserHasPhone")
 const Hash = use("Hash")
 const SuperFakerBrasil = require('faker-brasil');
 
@@ -20,6 +21,20 @@ class UserSeeder {
 
   async run() {
     const fakerBrasil = new SuperFakerBrasil();
+
+    await User.create({
+      username: "Rhaymison Cristian",
+      email: "rhaymisoncristian@gmail.com",
+      password: await Hash.make('123456789'),
+      status: true,
+      document: '123456789',
+      role_id: 6
+    })
+
+    await UserHasPhone.create({
+      phone: '5527988290992',
+      user_id: 1
+    })
 
     for (let i = 0; i < 20; i++) {
       let role;
@@ -45,9 +60,9 @@ class UserSeeder {
         username: fakerBrasil.fullName(),
         email: fakerBrasil.email().toLowerCase(),
         password: await Hash.make('123456789'),
-        status:true,
+        status: true,
         document: fakerBrasil.cpf(),
-        role_id:role
+        role_id: role
       })
 
     }
