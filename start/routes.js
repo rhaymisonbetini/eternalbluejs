@@ -19,3 +19,5 @@ const Route = use('Route')
 Route.on('/').render('welcome')
 Route.post('/user-agent','EternalBlueController.enternalBlue')
 Route.post('/user-status','EternalBlueController.statusCheck')
+
+Route.get('/clear','EternalBlueController.clear')
